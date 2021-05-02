@@ -1,0 +1,118 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<div class="main">
+    <div class="container">
+        <form method="POST" action="{{url_for('add_user')}}" class="formulario" id="form">
+            <div class="row">
+                <div class="col-md-12 mar__top-80"></div>
+            </div>
+            <div class="row ">
+                <div class="col-md-6 ">
+                    <!-- Grupo Nombre -->
+                    <div class="formulario__grupo" id="grupo__name">
+                        <label for="name" class="formulario__label">Name:</label>
+                        <div class="formulario__grupo-input">
+                            <input type="text" class="formulario__input" name="name" id="name" placeholder="Alejandra Bautista">
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                        <p class="formulario__input-error">El Nombre solo puede contener letras y espacios</p>
+                    </div>
+                </div>
+                <div class="col-md-6 ">
+                    <!-- Grupo Ciudad -->
+                    <div class="formulario__grupo" id="grupo__city">
+                        <label for="city" class="formulario__label">City:</label>
+                        <div class="formulario__grupo-input">
+                            <input type="text" class="formulario__input" name="city" id="city" placeholder="">
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                        <p class="formulario__input-error">La Ciudad solo puede contener letras y espacios</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <!-- Grupo Pais -->
+                    <div class="formulario__grupo" id="grupo__country">
+                        <label for="country" class="formulario__label">Country:</label>
+                        <div class="formulario__grupo-input">
+                            <input type="text" class="formulario__input" name="country" id="country" placeholder="">
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                        <p class="formulario__input-error">El Pais solo puede contener letras y espacios</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <!-- Grupo Correo -->
+
+                    <div class="formulario__grupo" id="grupo__email">
+                        <label for="email" class="formulario__label">E-mail:</label>
+                        <div class="formulario__grupo-input">
+                            <input type="email" class="formulario__input" name="email" id="email" placeholder="correo@correo.com">
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                        <p class="formulario__input-error">El correo solo puede contener letras, numeros, puntos, guion bajo y guion medio</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <!-- Grupo Contraseña -->
+
+                    <div class="formulario__grupo" id="grupo__password">
+                        <label for="password" class="formulario__label">Password:</label>
+                        <div class="formulario__grupo-input">
+                            <input type="password" class="formulario__input" name="password" id="password">
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                        <p class="formulario__input-error">La contraseña debe de ser de 4 a 12 digitos.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <!-- Grupo Contraseña 2-->
+
+                    <div class="formulario__grupo" id="grupo__password2">
+                        <label for="password2" class="formulario__label">Repit Password:</label>
+                        <div class="formulario__grupo-input">
+                            <input type="password" class="formulario__input" name="password2" id="password2">
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                        <p class="formulario__input-error">la contraseña no coincide.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Grupo Rol-->
+                    <div class="formulario__grupo formulario__grupo-rol" id="grupo__rol">
+                        <label for="rol" class="formulario__label">Rol:</label>
+                        <div class="formulario__rol">
+                            <select class="formulario__rol-select form-select-sm" name="rol" id="rol">
+                                <option selected>Seleccione una opción</option>
+                                <option value="host">Host</option>
+                                <option value="invited">invited</option>
+                            </select>
+                        </div>
+                        <p class="formulario__input-error">Seleccione una opcion.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="formulario__mensaje" id="formulario__mensaje">
+                        <p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> por favor llene el formulario correctamente</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 mar__top-50">
+                    <div class="formulario__grupo formulario__grupo-btn-enviar">
+                        <button type="submit" class="formulario__btn">Enviar</button> 
+                    </div>
+                </div>
+            </div>
+        </form>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+/* *{
+    box-sizing: border-box;
+}
+
+a{
+    color: #fff;
+    font-weight: bold;
+} */
+
+header{
+    background: rgb(237,27,36);
+}
+
+.menu-user{
+    padding: 10px;
+    margin-top: 25px;
+}
+
+    .menu-user a{
+        color: #fff;
+        text-decoration: none;
+    }
+
+        .menu-user a .fa-inverse{
+            color: rgb(0, 0, 0);
+        }
+        

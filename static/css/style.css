@@ -1,0 +1,433 @@
+/* General */
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    font-family: sans-serif;
+    background-image: url("../img/moroccan-flower.png");
+}
+
+    body .main .container {
+        background: #fff;
+    }
+
+a{
+    color: #fff;
+    font-weight: bold;
+}
+/* header */
+
+header{
+    background: rgb(237,27,36);
+}
+
+.social-header{
+    padding: 10px;
+    margin-top: 25px;
+}
+    .social-header a{
+        color: #fff;
+    }
+        .social-header a .fa-inverse{
+            color: rgb(0, 0, 0);
+        }
+
+.menu-bar{
+    background-color: rgb(0, 0, 0);
+    margin-top: 10px;
+}
+    .menu-bar a{
+        color: #fff;
+        font-size: 14px;
+        font-weight: 500;
+        text-decoration: none;
+    }
+    .menu-bar a:hover{
+        color: rgb(237,27,36);
+    }
+
+    .menu-list{
+        padding: 12px 0;
+        margin-bottom: 0;
+        font-family: Roboto black;
+    }
+        .menu-list > li:not(:last-child){
+            margin-right: 25px;
+        }
+
+
+#main > .container{
+    box-shadow: 0 7px 18px rgba(0,0,0,.5);
+}
+/* slider */
+
+#slider-home{
+    margin-bottom: 50px;
+    width: 100%;
+}
+
+.carousel-caption{
+    background-color: rgba(237,27,36,0.50);
+    height: 100%;
+    left: 0;
+    top: 0;
+    padding: 45px 45px;
+    text-align: left;
+    width: 340px;
+}
+
+    .carousel-caption p{
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    .carousel-caption h2{
+        font-size: 26px;
+        line-height: 18px;
+    }
+
+    .carousel-caption .h4{
+        font-size: 20px;
+        margin-bottom: 30px;
+        margin-top: 8px;
+    }
+
+    .carousel-caption img{
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    .carousel-caption a{
+        border-radius: 0;
+        font-weight: bold;
+        color: rgb(237,27,36);
+        border: none;
+        background-color: seashell;
+    }
+
+h3{
+    font-size: 24px;
+    border-bottom: 1px solid #9e9e9e;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+p{
+    font-size: 16px;
+}
+
+
+
+/* helpers */
+
+.mar__top-80{
+    margin-top: 80px;
+}
+
+.mar__top-50{
+    margin-top: 50px;
+}
+
+/* footers sidebars */
+
+.sidebar-zone{
+    background: #e0e0e0;
+    padding-top: 20px;
+}
+    .sidebar-zone h4{
+        font-size: 20px;
+        border-bottom: 1px solid #9e9e9e;
+        padding-bottom: 10px;
+        margin-bottom: 15px;
+    }
+
+    .sidebar-zone a{
+        margin-bottom: 18px;
+        display: block;
+        text-decoration: none;
+        color: rgb(237,27,36);
+    }
+
+    .sidebar-zone a:hover{
+        color: #000;    
+    }
+
+footer{
+    background-color: rgb(237,27,36);
+    color: #fff;
+    font-size: 12px;
+    padding: 10px 0;
+
+}
+    footer ul{
+        margin-bottom: 0;
+    }
+
+    footer a:hover {
+        color: #000;
+    }
+
+
+
+
+/* Estilos register.html */
+/* .formulario{
+    background: #e60e0e;
+} */
+
+
+.formulario__label{
+    display: block;
+    font-weight: 700;
+    padding: 10px;
+    cursor: pointer;
+}
+
+
+.formulario__grupo-input{
+    position: relative;
+}
+
+.formulario__input{
+    width: 100%;
+    background: #fff;
+    border: 3px solid rgb(150, 150, 150);
+    border-radius: 3px;
+    height: 45px;
+    line-height: 45px;
+    padding: 0 40px 0 10px;
+    transition: .3s ease all;
+}
+
+.formulario__input:focus {
+    border: 3px solid #0075ff;
+    outline: none;
+    box-shadow: 3px 0px 30px rgba(163, 163, 163, 0.4);
+}
+
+.formulario__rol-select{
+    width: 100%;
+    background: #fff;
+    border: 3px solid rgb(150, 150, 150);
+    border-radius: 3px;
+    height: 45px;
+    line-height: 45px;
+    padding: 0 40px 0 10px;
+    transition: .3s ease all;
+}
+
+.formulario__rol-select:focus {
+    border: 3px solid #0075ff;
+    outline: none;
+    box-shadow: 3px 0px 30px rgba(163, 163, 163, 0.4);
+}
+
+.formulario__input-error{
+    font-size: 12px;
+    margin-bottom: 0;
+    display: none;
+}
+
+.formulario__input-error-activo{
+    display: block;
+    color: #000 bold;
+}
+
+.formulario__validacion-estado{
+    position: absolute;
+    right: 10px;
+    bottom: 15px;
+    z-index: 100%;
+    font-size: 18px;
+    opacity: 0;
+}
+
+.formulario__mensaje{
+    height: 45px;
+    line-height: 45px;
+    background: #f66060;
+    padding: 0 15px;
+    border-radius: 3px;
+    display: none;
+}
+
+.formulario__mensaje-activo{
+    display: block;
+}
+
+.formulario__mensaje p{
+    margin: 0;
+}
+
+.formulario__grupo-btn-enviar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formulario__btn{
+    line-height: 45px;
+    width: 30%;
+    background: #0075ff;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: .1s ease all;
+}
+
+.formulario__btn:hover{
+    box-shadow: 3px 0px 30px rgba(163, 163, 163, 1);
+}
+
+.formulario__mensaje-exito{
+    font-size: 12px;
+    color: #119200;
+    display: none;
+}
+
+.formulario__mensaje-exito-activo{
+    display: block;
+}
+
+
+/* ----- ----- Estilos Validaciones js  ----- ----- */
+
+.formulario__grupo-incorrecto .formulario__validacion-estado{
+    color: #bb2929; 
+    opacity: 1;
+}
+
+.formulario__grupo-incorrecto .formulario__label{
+    color: #bb2929;
+}
+
+.formulario__grupo-incorrecto .formulario__input{
+    border: 3px solid #bb2929;
+}
+
+.formulario__grupo-correcto .formulario__validacion-estado{
+    color: #1ed12d; 
+    opacity: 1;
+}
+
+
+/* Estilos login.html */
+
+.formulario__login{
+    align-items: center;
+}
+
+.formulario__label-login{
+    display: block;
+    font-weight: 700;
+    padding: 10px;
+    cursor: pointer;
+}
+
+
+.formulario__grupo-input-login{
+    position: relative;
+    display: flex;
+}
+
+.formulario__input-login{
+    width: 100%;
+    background: #fff;
+    border: 3px solid rgb(150, 150, 150);
+    border-radius: 3px;
+    height: 45px;
+    line-height: 45px;
+    padding: 0 40px 0 10px;
+    transition: .3s ease all;
+}
+
+.formulario__input-login:focus {
+    border: 3px solid #0075ff;
+    outline: none;
+    box-shadow: 3px 0px 30px rgba(163, 163, 163, 0.4);
+}
+
+.formulario__input-error-login{
+    font-size: 12px;
+    margin-bottom: 0;
+    display: none;
+}
+
+.formulario__input-error-activo-login{
+    display: block;
+}
+
+.formulario__validacion-estado-login{
+    position: absolute;
+    right: 10px;
+    bottom: 15px;
+    z-index: 100%;
+    font-size: 18px;
+    opacity: 0;
+}
+
+.formulario__mensaje-activo-login{
+    display: block;
+}
+
+.formulario__mensaje-login p{
+    margin: 0;
+}
+
+.formulario__grupo-btn-enviar-login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formulario__btn-login{
+    line-height: 45px;
+    width: 30%;
+    background: #0075ff;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: .1s ease all;
+}
+
+.formulario__btn-login:hover{
+    box-shadow: 3px 0px 30px rgba(163, 163, 163, 1);
+}
+
+
+/* ----- ----- Mediaqueries  ----- ----- */
+
+@media screen and (max-width: 700px){
+
+    .formulario__btn,
+    .formulario__btn-login{
+        width: 100%;
+    }
+
+}
+
+
+/* ----- ----- USERS ----- ----- */
+
+.card-user{
+    width: 95%;
+    border-radius: 40px;
+    align-items: center;
+    margin-bottom: 25px;
+    background-color: #f66060;
+    padding: 10px;
+    /* border-color: #000 1px solid; */
+}
+
+.card-user .btn{
+    align-items: center;
+    background-color: blueviolet;
+}
