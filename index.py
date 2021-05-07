@@ -2,16 +2,12 @@ from flask import Flask, render_template, jsonify, Response, request
 import pymongo
 from bson import json_util
 from bson.objectid import ObjectId
-from datetime import date
 
 hostelP = Flask(__name__)
 
 myClient = pymongo.MongoClient("mongodb://admin:qwe123@3.209.153.124:27017")
-myDb = myClient["HostalPremiumDb"]
+myDb = myClient["hpapi"]
 myCollection = myDb["Users"]
-
-today = date.today
-
 
 
 @hostelP.route('/')
@@ -43,7 +39,8 @@ def add_user():
             'country': request.form['country'],
             'email': request.form['email'],
             'password': request.form['password'],
-            'rol': request.form['rol']
+            'rol': request.form['rol'],
+            'avatar': "https://www.rural-ftp.com//images/images/ID9Cq3rAy5p2682d.png"
         }
         
         result = myCollection.insert_one(dataUser)
