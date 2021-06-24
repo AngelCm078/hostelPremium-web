@@ -234,6 +234,19 @@ def avatar(id):
 
     return render_template("avatar.html", data_user = response)
 
+#agregar propiedad
+@hostelP.route('/propertie/<id>')
+def propertie(id):
+    if "email" in session:
+        email = session["email"]
+        result = {'email': email}
+        user = myCollection.find_one(result)
+        id_user = str(user['_id'])
+
+        return render_template('propertie.html', id=id_user, data_user=user)
+    else:
+        return render_template('index.html')
+
 
 #Guardar cambio de imagen.
 # @hostelP.route('/editAvatar/<id>', methods=["POST"])

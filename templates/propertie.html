@@ -1,0 +1,133 @@
+{% extends 'layoutHost.html' %}
+
+
+{% block title %} Add Propertie - {% for user in data_user %} {{user.name}} {% endfor %}{% endblock %}
+
+{% block body %}
+
+<div class="main">
+    <div class="container mar__top-80">
+        <div class="title">
+            <strong><h1>ADD PROPERTIE</h1></strong>            
+        </div>        
+        <form method="POST" action="" class="formulario" id="form">
+            <div class="row">
+                <div class="col-md-12 mar__top-50"></div>
+            </div>
+            <div class="row ">
+                <div class="col-md-6 ">
+                    <!-- Grupo Ciudad -->
+                    <div class="formulario__grupo" id="grupo__city">
+                        <label for="city" class="formulario__label">City:</label>
+                        <div class="formulario__grupo-input">
+                            <input type="text" class="formulario__input" name="city" id="city" placeholder="">
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                        <p class="formulario__input-error">La Ciudad solo puede contener letras y espacios</p>
+                    </div>
+                </div>
+                <div class="col-md-6 ">
+                    <!-- Grupo Habitaciones -->
+                    <div class="formulario__grupo" id="grupo__rooms">
+                        <label for="rooms" class="formulario__label">Number of rooms:</label>
+                        <div class="formulario__grupo-input">
+                            <input type="number" class="formulario__input" name="rooms" id="rooms"
+                                >
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>                        
+                    </div>
+                </div>                
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <!-- Grupo Pais -->
+                    <div class="formulario__grupo" id="grupo__country">
+                        <label for="country" class="formulario__label">Country:</label>
+                        <div class="formulario__grupo-input">
+                            <input type="text" class="formulario__input" name="country" id="country" placeholder="">
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                        <p class="formulario__input-error">El Pais solo puede contener letras y espacios</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <!-- Grupo Precio -->
+                    <div class="formulario__grupo" id="grupo__price">
+                        <label for="price" class="formulario__label">Price per night:</label>
+                        <div class="formulario__grupo-input">
+                            <input type="number" class="formulario__input" name="price" id="price"
+                               >
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <!-- Grupo Direccion -->
+                    <div class="formulario__grupo" id="grupo__adress">
+                        <label for="adress" class="formulario__label">Adress:</label>
+                        <div class="formulario__grupo-input">
+                            <input type="text" class="formulario__input" name="adress" id="adress">
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                    </div>                    
+                </div>
+                <div class="col-md-6">
+                    <!-- Grupo Description-->
+
+                    <div class="formulario__grupo" id="grupo__description">
+                        <label for="description" class="formulario__label">Description:</label>
+                        <div class="formulario__grupo-input">
+                            <textarea name="description" id="description" class="formulario__input" rows="6" cols="52"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <!-- Grupo Cover -->
+                    <div class="formulario__grupo" id="grupo__cover">
+                        <label for="cover" class="formulario__label">Load cover:</label>
+                        <div class="formulario__grupo-input">
+                            <input type="file" class="form-control formulario__input" id="cover" name="cover" placeholder="Upload image">
+                            <p><strong>Nota:</strong> Imágen principal para mostrar</p>
+                        </div>
+                    </div>
+                </div> 
+                <div class="col-md-6">
+                    <!-- Grupo Imagenes-->
+                    <div class="formulario__grupo" id="grupo__images">
+                        <label for="images" class="formulario__label">Upload images:</label>
+                        <div class="formulario__grupo-input">
+                            <input type="file" class="form-control formulario__input" id="images" name="images" multiple="">
+                            <p><strong>Nota:</strong> Imágenes de la propiedad</p>
+                        </div>
+                    </div>
+                </div>             
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Grupo Ubicacion-->
+                    <div class="formulario__grupo formulario__grupo-locationGM" id="grupo__locationGM">
+                        <label for="location" class="formulario__label">Location in google maps:</label>
+                        <div class="formulario__grupo-input">
+                            <input type="text" class="formulario__input" name="location" id="location">
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>  
+                        <p><strong>Nota:</strong> Busque en google maps la ubicacion de su propiedad y copie el código <strong>HTML</strong> en este espacio.</p>                    
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 mar__top-50">
+                    <div class="formulario__grupo formulario__grupo-btn-enviar">
+                        <button type="submit" class="formulario__btn1">Registrar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
