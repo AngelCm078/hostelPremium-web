@@ -1,0 +1,39 @@
+{% extends 'layoutHost.html' %}
+
+
+{% block title %}Avatar -{% for user in data_user %} {{user.name}} {% endfor %}{% endblock %}
+
+{% block body %}
+
+{% if message  %}
+    <div class="alert alert-danger" role="alert">
+        <p>{{ message }}</p>
+    </div>
+{% endif %}
+
+<div class="main">
+    <div class="container">
+        <div class="row mar__top-80">
+            {% for data_user in data_user %}
+            <div class="col-sm-12">
+                <h3><strong>Cambio de Avatar</strong></h3>
+                <div class="row">
+                    
+                    <div class="col-sm-6">
+                        <img src="{{data_user.avatar}}" class="img-user">
+                    </div>
+                    <div class="col-sm-6">
+                        <form method="POST" action="{{url_for('editavatar', id=data_user._id)}}" >
+                            <input type="file" name="avatarUser" id="avatarUser" class="formulario__label">
+                            <input type="submit" value="UPLOAD" class="btn btn-warning btn-option" >
+                            <!-- <a href="/avatar" type="submit" class="btn btn-warning btn-option"> <strong>UPLOAD</strong></a> -->
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

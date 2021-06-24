@@ -60,7 +60,7 @@
                 <nav class="container" role="menu">
                     <ul class="menu-list list-inline">
                         <li class="list-inline-item">
-                            <a href="http://127.0.0.1:5000/">INICIO</a>
+                            <a href={{url_for('index')}}>INICIO</a>
                         </li>
                         <li class="list-inline-item">
                             <a href="#">QUIENE SOMOS</a>
@@ -69,10 +69,10 @@
                             <a href={{url_for('users')}}>USERS</a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="http://127.0.0.1:5000/register">REGISTRATE</a>
+                            <a href={{url_for('register')}}>REGISTRATE</a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="http://127.0.0.1:5000/login">INICIA SESION</a>
+                            <a href={{url_for('login')}}>INICIA SESION</a>
                         </li>
                     </ul>
                 </nav>

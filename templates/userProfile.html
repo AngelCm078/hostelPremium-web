@@ -1,0 +1,131 @@
+{% extends 'layoutHost.html' %}
+
+
+
+{% block title %}Profile -{% for user in data_user %} {{user.name}} {% endfor %}{% endblock %}
+
+
+
+{% block body %}
+
+<div class="main">
+    <div class="container">
+        {% for data_user in data_user %}
+        <div class="row mar__top-80">
+            <div class="col-sm-12">
+                <h3><strong>Datos de Usuario</strong></h3>
+                <div class="row">
+                    
+                    <div class="col-sm-3">
+                        <label for="avatar" class="formulario__label">Avatar:</label>
+                        <img class="img-user" src="{{data_user.avatar}}">
+                        <div>
+                            <a href="/avatar/{{data_user._id}}" type="button" class="btn btn-primary btn-options">Cambiar Avatar</a>
+                        </div>
+
+                        <div>
+                            <a href="#" type="button" class="btn btn-info btn-options">Cambiar Contraseña</a>
+                        </div>
+                    </div>
+                    <div class="col-sm-1">
+                    </div>
+                    <div class="col-sm-4">
+                        <form method="POST" action="{{url_for('editprofile', id=data_user._id)}}" >
+                        <div class="formulario__grupo" id="grupo__name">
+                            <label for="name" class="formulario__label">Name:</label>
+                            <div class="formulario__grupo-input">
+                                <input type="text" class="formulario__input" name="name" id="name"
+                                    value="{{data_user.name}}">
+                            </div>
+                        </div>
+                        <div class="formulario__grupo" id="grupo__email">
+                            <label for="email" class="formulario__label">E-mail:</label>
+                            <div class="formulario__grupo-input">
+                                <input type="email" class="formulario__input" name="email" id="email"
+                                    value="{{data_user.email}}" disabled>
+                            </div>
+                        </div>
+                        <div class="formulario__grupo" id="grupo__phone">
+                            <label for="phone" class="formulario__label">Phone:</label>
+                            <div class="formulario__grupo-input">
+                                {% if data_user.phone %}
+                                <input type="number" class="formulario__input" name="phone" id="phone"
+                                    value="{{data_user.phone}}">
+                                {% else %}
+                                <input type="number" class="formulario__input" name="phone" id="phone"
+                                    placeholder="555 - 55 - 55"">
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class=" formulario__grupo" id="grupo__description">
+                                <label for="description" class="formulario__label">About me:</label>
+                                <div class="formulario__grupo-input">
+                                    {% if data_user.description %}
+                                    <textarea name="description" rows="6" cols="41">{{data_user.description}}</textarea>
+                                    {% else %}
+                                    <textarea name="description" rows="6" cols="41"
+                                        placeholder="Cuentanos sobre ti."></textarea>
+                                    {% endif %}
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="formulario__grupo" id="grupo__city">
+                                <label for="city" class="formulario__label">City:</label>
+                                <div class="formulario__grupo-input">
+                                    <input type="text" class="formulario__input" name="city" id="city"
+                                        value="{{data_user.city}}">
+                                </div>
+                            </div>
+                            <div class="formulario__grupo" id="grupo__country">
+                                <label for="country" class="formulario__label">Country:</label>
+                                <div class="formulario__grupo-input">
+                                    <input type="text" class="formulario__input" name="country" id="country"
+                                        value="{{data_user.country}}">
+                                </div>
+                            </div>
+                            <div class="formulario__grupo" id="grupo__phone">
+                                <label for="cell-phone" class="formulario__label">Cell-Phone:</label>
+                                <div class="formulario__grupo-input">
+                                    {% if data_user.cellphone %}
+                                    <input type="number" class="formulario__input" name="cellphone" id="cell-phone"
+                                        value="{{data_user.cellphone}}">
+                                    {% else %}
+                                    <input type="number" class="formulario__input" name="cell-phone" id="cell-phone"
+                                        placeholder="(555) 555 - 55 - 55"">
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class=" row">
+            <div class="col-sm-3">
+                {% if data_user.rol == "invited" %}
+                <div>
+                    <a href="#" type="button" class="btn btn-warning btn-options">Convertirse a <strong>HOST</strong></a>
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}  
+            <div class="col-sm-1">                
+            </div>
+            <div class="col-sm-4">
+            </div>
+            <div class="col-sm-4">                
+                <div>
+                    <button type="submit" class="btn btn-warning btn-options btn-end"><strong>Guardar Cambios</strong></button> 
+                    <!-- <a href="#" type="button" class="btn btn-warning btn-options btn-end"><strong>Guardar Cambios</strong></a> -->
+                </div>                
+            </div>
+        </form> 
+                 
+        </div>
+    </div>
+</div>
+
+                        {% endblock %}
