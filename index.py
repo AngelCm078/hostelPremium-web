@@ -1,13 +1,10 @@
-from itertools import count
-import re
-from flask import Flask, render_template,request, session, url_for, redirect, send_from_directory
+
+from flask import Flask, render_template,request, session, url_for, redirect,
 import os
 import pymongo
 import bcrypt
 from bson.objectid import ObjectId
-from werkzeug.wrappers import response
 
-# UPLOAD_FOLDER = os.path.abspath("./static/img/usersProfile/")
 
 hostelP = Flask(__name__)
 hostelP.config["UPLOAD_FOLDER"] = './static/img/usersProfile/'
