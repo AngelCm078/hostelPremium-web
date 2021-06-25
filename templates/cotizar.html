@@ -1,0 +1,112 @@
+{% extends 'layoutHost.html' %}
+
+
+
+{% block title %}Edit Propertie{% endblock %}
+
+
+{% block body %}
+
+<div class="main">
+    <div class="container mar__top-80">
+
+        {% for data_propertie in data_propertie %}
+
+        <div class="row mar__top-80">
+            <div class="col-sm-12">
+                <h3><strong>{{data_propertie.city}} - {{data_propertie.country}} </strong></h3>
+                <div class="row">                    
+                    <div class="col-sm-3">
+                        <label for="cover" class="formulario__label">DISFRUTA</label>
+                        <img class="img-user" src="{{url_for('static', filename='img/usersProfile/'+data_propertie.cover)}}">
+                        
+                    </div>
+                    <div class="col-sm-9">
+                        
+                        
+                        {% for imagePropertie in data_propertie['images'] %} 
+                        
+                        <div class="fluid" style="float:right">
+                            <img src="{{url_for('static', filename='img/usersProfile/'+imagePropertie)}}" width="165" height="165" style="border-radius: 3%; padding: 3px;"  class="" >
+                        </div> 
+                         
+                        {% endfor %}
+                        
+                    </div>
+                    <form enctype="multipart/form-data" method="POST" class="formulario" id="form" action="">
+                        <div class="row">
+                            <div class="col-md-12 mar__top-50"></div>
+                        </div>
+                        <div class="row ">
+                            
+                            <div class="col-md-6 ">
+                                <!-- Grupo Habitaciones -->
+                                <div class="formulario__grupo" id="grupo__rooms">
+                                    <label for="rooms" class="formulario__label">Number of rooms:</label>
+                                    <div class="formulario__grupo-input">
+                                        <input type="number" class="formulario__input" name="rooms" id="rooms"
+                                            value="{{data_propertie.rooms}}" disabled>
+                                    </div>                        
+                                </div>
+                            </div>                
+                        </div>
+                        <div class="row">
+                           
+                            <div class="col-md-6">
+                                <!-- Grupo Precio -->
+                                <div class="formulario__grupo" id="grupo__price">
+                                    <label for="price" class="formulario__label">Price per night:</label>
+                                    <div class="formulario__grupo-input">
+                                        <input type="number" class="formulario__input" name="price" id="price"
+                                           value="{{data_propertie.price}}" disabled>
+                                    </div>                        
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <!-- Grupo Direccion -->
+                                <div class="formulario__grupo" id="grupo__adress">
+                                    <label for="adress" class="formulario__label">Adress:</label>
+                                    <div class="formulario__grupo-input">
+                                        <input type="text" class="formulario__input" name="adress" id="adress" value="{{data_propertie.adress}}" disabled>
+                                    </div>
+                                </div>                    
+                            </div>
+                            
+                        </div>        
+                        <div class="row">
+                            
+                            <div class="col-md-6">
+                                <!-- Grupo Description-->
+            
+                                <div class="formulario__grupo" id="grupo__description">
+                                    <label for="description" class="formulario__label">Description:</label>
+                                    <div class="formulario__grupo-input">
+                                        <textarea name="description" id="description" class="formulario__inpu" rows="6" cols="52" disabled>{{data_propertie.description}}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                        
+                        <div class="row">
+                            <div class="col-md-12">
+                                <a href="{{data_propertie.location}}" target="_blank"><strong class="text" style="color:blue";>Ver en google maps</strong></a>                                
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 mar__top-50">
+                                <div class="formulario__grupo formulario__grupo-btn-enviar">
+                                    <button type="submit" class="formulario__btn1">Reservar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

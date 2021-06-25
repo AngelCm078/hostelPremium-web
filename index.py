@@ -253,6 +253,29 @@ def editpropertie(id):
 
     return redirect(url_for("hostArea"))
 
+@hostelP.route('/cotizar/<id>')
+def cotizar(id):    
+
+    user = myCollection.find()
+
+    data = propertieCollection.find_one({'_id': ObjectId(id)})  
+    res = []  
+    res.append({
+        '_id':data['_id'],
+        'city':data['city'],
+        'rooms':data['rooms'],
+        'country':data['country'],
+        'price':data['price'],
+        'adress':data['adress'],
+        'description':data['description'],
+        'location':data['location'],
+        'cover':data['cover'],
+        'images':data['images'],
+        'idUSer':data['idUSer']
+    }) 
+
+    return render_template("cotizar.html", data_propertie = res, data_user=user)
+
 
 
 #LLenado de datos de perfil de usuario
