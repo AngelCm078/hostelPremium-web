@@ -34,10 +34,10 @@
 
                             <div class="row">
                                 <div class="col-md-6">
-                                    <a href="#" class="btn btn-warning">EDITAR</a>
+                                    <a href="/properties/{{propertie._id}}" class="btn btn-warning">EDIT</a>
                                 </div>
                                 <div class="col-md-6">
-                                    <a href="#" class="btn btn-danger">ELIMINAR</a>
+                                    <a href="/delete/{{propertie._id}}" class="btn btn-danger">DELETE</a>
                                 </div>
                             </div>
                         </div>
@@ -47,9 +47,9 @@
                 {% endif %}
             {% endfor %}
         </div>
-        {% endif%}
+        
 
-        {% if data_user.rol == "invited" %}
+        {% elif data_user.rol == "invited" %}
 
         <div class="row">
                 

@@ -422,9 +422,8 @@ footer{
     border-radius: 40px;
     align-items: center;
     margin-bottom: 25px;
-    background-color: #e69494;
+    background-color: #ff0d0d;
     padding: 10px;
-    opacity: 80%;
     color: #e0e0e0;
     /* border-color: #000 1px solid; */
 }

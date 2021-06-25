@@ -176,6 +176,7 @@ def logout():
 def hostArea():
     response = []
     propertie = propertieCollection.find()
+
     for data in propertie:
         response.append({
             '_id':data['_id'],
@@ -189,7 +190,7 @@ def hostArea():
             'cover':data['cover'],
             'images':data['images'],
             'status':data['status'],
-            'idUSer':data['idUSer']
+            'idUSer':data['idUSer'],            
         })
     if "email" in session:
         email = session["email"]    
@@ -199,6 +200,59 @@ def hostArea():
         return render_template('hostArea.html', id = id_user, data_user=user, properties=response)        
     else:
         return redirect(url_for("login"))
+
+@hostelP.route('/delete/<id>')
+def delete(id):
+        propertieCollection.delete_one({'_id': ObjectId(id)})
+        return redirect(url_for("hostArea"))
+
+#LLenado de datos de propiedad
+@hostelP.route('/properties/<id>')
+def properties(id):
+    user = myCollection.find()
+    
+    data = propertieCollection.find_one({'_id': ObjectId(id)})  
+    response = []  
+    response.append({
+        '_id':data['_id'],
+        'city':data['city'],
+        'rooms':data['rooms'],
+        'country':data['country'],
+        'price':data['price'],
+        'adress':data['adress'],
+        'description':data['description'],
+        'location':data['location'],
+        'cover':data['cover'],
+        'images':data['images'],
+        'idUSer':data['idUSer']
+    })          
+
+    return render_template("userPropertie.html", data_propertie = response, data_user=user)
+
+#Guardar cambio de datos de la propiedad
+@hostelP.route('/editPropertie/<id>', methods=["POST"])
+def editpropertie(id):
+    city = request.form.get('city')
+    rooms = request.form.get('rooms')
+    country = request.form.get('country')
+    price = request.form.get('price')
+    adress = request.form.get('adress')
+    description = request.form.get('description')
+    location= request.form.get('location')
+
+    propertieCollection.update_one({'_id': ObjectId(id)}, {"$set":{
+        
+        "city": city,
+        "country": country,
+        "rooms": rooms,
+        "price": price,
+        "description": description,
+        "adress": adress,
+        "location": location
+    }})
+
+    return redirect(url_for("hostArea"))
+
 
 
 #LLenado de datos de perfil de usuario
@@ -216,7 +270,7 @@ def profile(id):
         'phone':dataUser['phone'],
         'cellphone':dataUser['cellphone'],
         'description':dataUser['description']
-    })
+    })    
 
     return render_template("userProfile.html", data_user = response)
 
