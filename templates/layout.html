@@ -24,7 +24,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <a href="http://127.0.0.1:5000/"><img src="{{url_for('static', filename='img/hostelPremium3.png')}}" alt="Hostel Premium">  </a>                                              
+                        <a href="/"><img src="{{url_for('static', filename='img/hostelPremium3.png')}}" alt="Hostel Premium">  </a>                                              
                     </div>
                     <div class="col-md-6">
                         <ul class="social-header list-inline text-end">
@@ -63,7 +63,7 @@
                             <a href={{url_for('index')}}>INICIO</a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="#">QUIENE SOMOS</a>
+                            <a href={{url_for('allProperties')}}>PROPERTIES</a>
                         </li>
                         <li class="list-inline-item">
                             <a href={{url_for('users')}}>USERS</a>

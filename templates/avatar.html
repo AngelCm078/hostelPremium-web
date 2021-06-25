@@ -20,11 +20,11 @@
                 <div class="row">
                     
                     <div class="col-sm-6">
-                        <img src="{{data_user.avatar}}" class="img-user">
+                        <img src="{{url_for('static', filename='img/usersProfile/'+data_user.avatar)}}" class="img-user">
                     </div>
-                    <div class="col-sm-6">
-                        <form method="POST" action="{{url_for('editavatar', id=data_user._id)}}" >
-                            <input type="file" name="avatarUser" id="avatarUser" class="formulario__label">
+                    <div class="col-sm-6">                        
+                        <form enctype="multipart/form-data" method="POST" action="{{url_for('editavatar', id=data_user._id)}}" >
+                            <input type="file" name="avatar" id="avatar" class="formulario__label">
                             <input type="submit" value="UPLOAD" class="btn btn-warning btn-option" >
                             <!-- <a href="/avatar" type="submit" class="btn btn-warning btn-option"> <strong>UPLOAD</strong></a> -->
                         </form>

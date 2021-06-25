@@ -18,14 +18,14 @@
                     
                     <div class="col-sm-3">
                         <label for="avatar" class="formulario__label">Avatar:</label>
-                        <img class="img-user" src="{{data_user.avatar}}">
+                        <img class="img-user" src="{{url_for('static', filename='img/usersProfile/'+data_user.avatar)}}">
                         <div>
                             <a href="/avatar/{{data_user._id}}" type="button" class="btn btn-primary btn-options">Cambiar Avatar</a>
                         </div>
 
-                        <div>
+                        <!-- <div>
                             <a href="#" type="button" class="btn btn-info btn-options">Cambiar Contraseña</a>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="col-sm-1">
                     </div>

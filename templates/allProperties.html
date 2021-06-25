@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+
+{% block title %}All Properties{% endblock %}
+
+{% block body %}
+
+<div class="main">
+    <div class="container">
+
+        <h1>Properties</h1>
+        <div class="row">
+            {% for propertie in allproperties %}              
+            <div class="col-md-4">
+                <div class="card card_pro">
+                    <div class="">
+                        <img src="{{url_for('static', filename='img/usersProfile/'+propertie.cover)}}" alt="" class="cover_pro">                        
+                    </div>                      
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>{{propertie.city}} - {{propertie.country}} </strong> </h5>
+
+                        {% if propertie.status == True %}
+                        <div class="alert alert-success" role="alert">
+                            <p class="card-text card_p"><strong>Disponible</strong></p>
+                        </div>
+                        {% else%}
+                        <div class="alert alert-danger" role="alert">
+                            <p class="card-text card_p"> <strong>Reservada</strong></p>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}      
+        </div>
+    </div>
+
+
+    {% endblock %}

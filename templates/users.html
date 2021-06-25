@@ -1,6 +1,9 @@
 {% extends 'layout.html' %}
 
+{% block title %}All UsersProperties{% endblock %}
+
 {% block body %}
+
 <div class="main">
 <div class="container">
 
@@ -14,16 +17,13 @@
                         <i class="fa fa-circle fa-stack-2x"></i>
                         <i class="fa fa-user fa-stack-1x fa-inverse"></i>
                     </span> -->
-                    <img src="{{user.avatar}}" alt="" class="img-user">
+                    <img src="{{url_for('static', filename='img/usersProfile/'+user.avatar)}}" alt="" class="img-user">
                 </div>                  
 
                 <div class="card-body">
                     <h5 class="card-title"><strong>User: {{user.name}}</strong> </h5>
                     <p class="card-text"><strong>E-Mail:</strong> {{user.email}}</p>
-                    <p class="card-text"><strong>Country:</strong> {{user.country}}</p>
-                    <p class="card-text"><strong>City:</strong> {{user.city}}</p>
                     <p class="card-text"><strong>Rol:</strong> {{user.rol}}</p>
-                    <a href="#" id="goPerfil" class="btn btn-primary">Ver Perfil</a>
                 </div>
             </div>
         </div>

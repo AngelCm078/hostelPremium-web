@@ -10,7 +10,7 @@
         <div class="title">
             <strong><h1>ADD PROPERTIE</h1></strong>            
         </div>        
-        <form method="POST" action="" class="formulario" id="form">
+        <form enctype="multipart/form-data" method="POST" class="formulario" id="form" action="{{url_for('addpropertie')}}">
             <div class="row">
                 <div class="col-md-12 mar__top-50"></div>
             </div>
@@ -98,9 +98,9 @@
                 <div class="col-md-6">
                     <!-- Grupo Imagenes-->
                     <div class="formulario__grupo" id="grupo__images">
-                        <label for="images" class="formulario__label">Upload images:</label>
+                        <label for="imageMain[]" class="formulario__label">Upload images:</label>
                         <div class="formulario__grupo-input">
-                            <input type="file" class="form-control formulario__input" id="images" name="images" multiple="">
+                            <input type="file" class="form-control formulario__input" id="imageMain[]" name="imageMain[]" multiple="">
                             <p><strong>Nota:</strong> Imágenes de la propiedad</p>
                         </div>
                     </div>

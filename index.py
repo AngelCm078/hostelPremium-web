@@ -1,8 +1,11 @@
+from itertools import count
+import re
 from flask import Flask, render_template,request, session, url_for, redirect, send_from_directory
 import os
 import pymongo
 import bcrypt
 from bson.objectid import ObjectId
+from werkzeug.wrappers import response
 
 # UPLOAD_FOLDER = os.path.abspath("./static/img/usersProfile/")
 
@@ -12,6 +15,7 @@ hostelP.config["UPLOAD_FOLDER"] = './static/img/usersProfile/'
 myClient = pymongo.MongoClient("mongodb://admin:qwe123@3.209.153.124:27017")
 myDb = myClient["hostelpremiumdb"]
 myCollection = myDb["Users"]
+propertieCollection = myDb["Properties"]
 
 hostelP.secret_key = "qwe123"
 
@@ -39,7 +43,7 @@ def register():
         password1 = request.form.get("password1")
         password2 = request.form.get("password2")
         rol = request.form.get("rol")
-        avatar = "https://www.aicad.es/profesorado-e-investigacion/img/anonimo.a5821669.jpg"
+        avatar = "perfil.png"
         phone = ""
         cellphone=""
         description=""
@@ -170,13 +174,29 @@ def logout():
 #Area principal de usuario
 @hostelP.route('/hostArea')
 def hostArea():
-
+    response = []
+    propertie = propertieCollection.find()
+    for data in propertie:
+        response.append({
+            '_id':data['_id'],
+            'city':data['city'],
+            'rooms':data['rooms'],
+            'country':data['country'],
+            'price':data['price'],
+            'adress':data['adress'],
+            'description':data['description'],
+            'location':data['location'],
+            'cover':data['cover'],
+            'images':data['images'],
+            'status':data['status'],
+            'idUSer':data['idUSer']
+        })
     if "email" in session:
-        email = session["email"]
+        email = session["email"]    
         result = {'email': email}
         user = myCollection.find_one(result)
         id_user = str(user['_id'])
-        return render_template('hostArea.html', id = id_user, data_user=user)        
+        return render_template('hostArea.html', id = id_user, data_user=user, properties=response)        
     else:
         return redirect(url_for("login"))
 
@@ -234,106 +254,77 @@ def avatar(id):
 
     return render_template("avatar.html", data_user = response)
 
-#agregar propiedad
-@hostelP.route('/propertie/<id>')
-def propertie(id):
+# Guardar cambio de imagen.
+@hostelP.route('/editavatar/<id>', methods=["POST"])
+def editavatar(id):
+
+    avatar = request.files['avatar']
+    avatarU = avatar.filename
+    avatar.save(os.path.join(hostelP.config['UPLOAD_FOLDER'], avatarU))
+
+    myCollection.update_one({'_id': ObjectId(id)}, {'$set': {
+        'avatar': avatarU
+    }})
+    
+    return redirect(url_for("hostArea"))
+
+#formulario para agregar propiedad
+@hostelP.route('/propertie', methods=['POST', 'GET'])
+def propertie():
+
+    message = ""
+
     if "email" in session:
         email = session["email"]
         result = {'email': email}
         user = myCollection.find_one(result)
-        id_user = str(user['_id'])
 
-        return render_template('propertie.html', id=id_user, data_user=user)
-    else:
-        return render_template('index.html')
+        return render_template('propertie.html',  data_user=user)
 
 
-#Guardar cambio de imagen.
-# @hostelP.route('/editAvatar/<id>', methods=["POST"])
-# def editavatar(id):
+#agregar propiedad en base de datos
+@hostelP.route('/addpropertie', methods=["POST"])
+def addpropertie():
+    city = request.form.get('city')
+    rooms = request.form.get('rooms')
+    country = request.form.get('country')
+    price = request.form.get('price')
+    adress = request.form.get('adress')
+    description = request.form.get('description')
+    location= request.form.get('location')
+    cover = request.files['cover']
+    lcover = cover.filename
+    cover.save(os.path.join(hostelP.config['UPLOAD_FOLDER'], lcover))
+    imageMain = request.files.getlist('imageMain[]')
+    name_images =[]
+    for image in imageMain:
+            image.save(os.path.join(hostelP.config['UPLOAD_FOLDER'], image.filename))
+            name_images.append(image.filename)
 
-    # avatar = request.files['avatarUser']
-    # avatarU = avatar.filename
-    # avatar.save(os.path.join(hostelP.config['UPLOAD_FOLDER'], avatarU))
+    email = session["email"]
+    result = {'email': email}
+    data_user=myCollection.find_one(result)
+    idUSer = str(data_user['_id'])
 
-    # myCollection.update_one({'_id': ObjectId(id)}, {'$set': {
-    #     'avatar': avatarU
-    # }})
-    
-    # return redirect(url_for("hostArea"))
+    data_propertie = {
+        "city": city,
+        "rooms": rooms,
+        "country": country,
+        "price": price,
+        "adress": adress,
+        "description": description,
+        "location": location,
+        "cover": lcover,
+        "images": name_images,
+        "idUSer": idUSer,
+        "status": True
+    }
+            
+    propertieCollection.insert_one(data_propertie)
 
-    # f = request.files['avatarUser']
-    # avatarUser = f.filename
-    # f.save(os.path.join(hostelP.config["UPLOAD_FOLDER"], avatarUser))
+    return redirect(url_for("hostArea"))
 
-    # myCollection.update_one({'_id': ObjectId(id)}, {"$set":{
-    #     "avatar": avatarUser        
-    # }})
-
-    # return redirect(url_for("hostArea"))
-
-
-    # if request.method == "POST":
-
-    #     if "ourfile" not in request.files:
-    #         message = "The form has no file part"
-    #         # return redirect(url_for("avatar", message=message))
-
-    #     f = request.files["ourfile"]
-
-    #     if f.filename == "":
-    #         message = "No file selected"
-    #         # return redirect(url_for("avatar", message=message))
-
-    #     filename = f.filename
-    #     f.save(os.path.join(hostelP.config["UPLOAD_FOLDER"], filename))
-    #     # return redirect(url_for("get_file", filename=filename))
-    #     myCollection.update_one({'_id': ObjectId(id)}, {"$set":{
-    #         'avatar': filename
-    #     }})
-
-
-
-
-# @hostelP.route('/avatar', methods=["GET", "POST"])
-# def avatar():    
-#     avatarUpload = ""       
-    
-#     if request.method == "POST":
-
-#         if "ourfile" not in request.files:
-#             message = "The form has no file part"
-#             return redirect(url_for("avatar", message=message))
-
-#         f = request.files["ourfile"]
-
-#         if f.filename == "":
-#             message = "No file selected"
-#             return redirect(url_for("avatar", message=message))
-
-#         filename = f.filename
-#         f.save(os.path.join(hostelP.config["UPLOAD_FOLDER"], filename))
-#         # return redirect(url_for("get_file", filename=filename))
-#         myCollection.update_one({'email': email}, {"$SET":{
-#             'avatar': filename
-#         }})
-#         return redirect(url_for('profile'))
-        
-
-
-#     if "email" in session:
-#         email = session["email"]  
-#         user = myCollection.find_one({'email': email})
-#         response = user        
-#         return render_template('avatar.html', email = email, data_user=response, avatar=avatarUpload)        
-#     else:
-#         return redirect(url_for("login"))
-
-
-
-@hostelP.route('/avatar/<filename>')
-def get_file(filename):
-    return send_from_directory(hostelP.config["UPLOAD_FOLDER"], filename)
+  
 
 
 @hostelP.route('/users')
@@ -343,6 +334,15 @@ def users():
     print(response)
     return render_template('users.html', allusers=response)
 
+@hostelP.route('/allProperties')
+def allProperties():
+    properties = propertieCollection.find()
+    response = properties
+    print (response)
+    return render_template('allProperties.html', allproperties = response)
+
+
+
 
 if __name__ == "__main__":
-    hostelP.run(debug=True, port=4000)
+    hostelP.run(debug=True)

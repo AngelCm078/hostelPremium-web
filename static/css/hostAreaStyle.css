@@ -241,3 +241,26 @@ footer{
     .mar__top-50{
         margin-top: 30px;
     }
+
+    /* PROPERTIES */
+
+    .cover_pro{
+        width: 200px;
+        height: 200px;
+        border-radius: 100px;
+        margin-top: 25px;
+    }
+    
+    .card_pro{
+        align-items: center;
+        border-radius: 40px;
+        border-color: #fff;
+    }
+    
+    .card_p{
+        text-align: center;
+    }
+
+    .tl{
+        text-align: center;
+    }
